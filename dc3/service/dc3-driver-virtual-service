@@ -1,4 +1,13 @@
 #!/bin/bash
+### BEGIN INIT INFO
+# Provides:          IOT DC3
+# Required-Start:    $local_fs $network
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Virtual Driver
+# Description:       DC3 Virtual Driver Service
+### END INIT INFO
 
 #
 #  Copyright 2018-2020 Pnoker. All Rights Reserved.
@@ -15,16 +24,6 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
-
-### BEGIN INIT INFO
-# Provides:          IOT DC3
-# Required-Start:    $local_fs $network
-# Required-Stop:     $local_fs
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: Virtual Driver
-# Description:       DC3 Virtual Driver Service
-### END INIT INFO
 
 set -e
 
