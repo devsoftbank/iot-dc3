@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 ### BEGIN INIT INFO
 # Provides:             dc3-virtual
@@ -22,7 +22,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib
 
 cd $BASE_DIR
-java $JAVA_OPS -Djava.security.egd=file:/dev/./urandom -jar $JAR_FILE >/dev/null &
+nohup java $JAVA_OPS -Djava.security.egd=file:/dev/./urandom -jar $JAR_FILE >/dev/null &
 }
 
 stop()
