@@ -20,7 +20,7 @@ export JAVA_HOME=/usr/local/java/jdk1.8.0_251
 start()
 {
 cd $BASE_DIR
-nohup java $JAVA_OPS -Djava.security.egd=file:/dev/./urandom -jar $JAR_FILE >/dev/null &
+java $JAVA_OPS -Djava.security.egd=file:/dev/./urandom -jar $JAR_FILE >/dev/null &
 }
 
 stop()
