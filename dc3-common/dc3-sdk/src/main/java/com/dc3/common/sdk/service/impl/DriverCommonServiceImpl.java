@@ -234,6 +234,7 @@ public class DriverCommonServiceImpl implements DriverCommonService {
      * @return boolean
      */
     public boolean register() {
+        log.info("Registering {} ", driverProperty.getName());
         if (!Dc3Util.isDriverPort(this.port)) {
             log.error("Invalid driver port, port range is 8600-8799");
             return false;
