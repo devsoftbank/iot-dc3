@@ -13,10 +13,14 @@ set -e
 
 JAR_FILE="dc3-driver-virtual.jar"
 BASE_DIR="/home/pi/iot-dc3/dc3-driver/dc3-driver-mqtt/target"
-JAVA_OPS="-server -Xms128m -Xmx512m -XX:CompressedClassSpaceSize=128m -XX:MetaspaceSize=200m -XX:MaxMetaspaceSize=200m"
+JAVA_OPS="-server -Xms128m -Xmx512m -XX:MetaspaceSize=200m -XX:MaxMetaspaceSize=200m"
 
 start()
 {
+export JAVA_HOME=/usr/local/java/jdk1.8.0_251
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib
+
 cd $BASE_DIR
 nohup java $JAVA_OPS -Djava.security.egd=file:/dev/./urandom -jar $JAR_FILE >/dev/null &
 }

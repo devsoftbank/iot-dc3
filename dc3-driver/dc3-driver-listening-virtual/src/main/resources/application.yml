@@ -7,10 +7,10 @@ driver:
   schedule:
     read:
       enable: false
-      corn: '0/30 * * * * ?'
+      corn: '0 0/5 * * * ?'
     custom:
       enable: false
-      corn:  '0/30 * * * * ?'
+      corn:  '0 0/5 * * * ?'
   point-attribute:
     - displayName: 关键字
       name: key
