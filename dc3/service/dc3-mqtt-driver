@@ -1,0 +1,47 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:             dc3
+# Required-Start:       $remote_fs $syslog
+# Required-Stop:        $remote_fs $syslog
+# Default-Start:        2 3 4 5
+# Default-Stop:
+# Short-Description:    DC3 Mqtt Driver Service
+### END INIT INFO
+
+set -e
+
+JAR_FILE="dc3-driver-virtual.jar"
+BASE_DIR="/home/pi/iot-dc3/dc3-driver/dc3-driver-mqtt/target"
+JAVA_OPS="-server -Xms128m -Xmx512m -XX:CompressedClassSpaceSize=128m -XX:MetaspaceSize=200m -XX:MaxMetaspaceSize=200m"
+
+start()
+{
+cd $BASE_DIR
+nohup java $JAVA_OPS -Djava.security.egd=file:/dev/./urandom -jar $JAR_FILE >/dev/null &
+}
+
+stop()
+{
+pid=`ps -ef|grep $JAR_FILE |grep -v grep |awk '{print $2}'`
+kill -9 $pid
+}
+
+case "$1" in
+
+start)
+start
+;;
+
+stop)
+stop
+;;
+
+restart)
+stop
+start
+;;
+
+*)
+esac
+exit 0
