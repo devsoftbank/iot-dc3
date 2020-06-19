@@ -53,4 +53,4 @@ logging:
     com.dc3.common.sdk: DEBUG
     com.dc3: DEBUG
   file:
-    name: dc3/logs/driver/plcs7/${spring.application.name}.log
+    name: /home/pi/logs/driver/plcs7/${spring.application.name}.log

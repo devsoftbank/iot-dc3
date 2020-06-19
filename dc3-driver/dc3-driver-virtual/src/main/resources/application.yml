@@ -38,4 +38,4 @@ logging:
     com.dc3.common.sdk: DEBUG
     com.dc3: DEBUG
   file:
-    name: dc3/logs/driver/virtual/${spring.application.name}.log
+    name: /home/pi/logs/driver/virtual/${spring.application.name}.log
