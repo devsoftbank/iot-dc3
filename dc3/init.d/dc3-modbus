@@ -1,19 +1,19 @@
 #! /bin/bash
 
 ### BEGIN INIT INFO
-# Provides:             dc3-opcda
+# Provides:             modbus
 # Required-Start:       $local_fs $network
 # Required-Stop:        $local_fs $network
 # Default-Start:        2 3 4 5
 # Default-Stop:         0 1 6
-# Short-Description:    DC3 Opc Da Driver
-# Description:          DC3 Opc Da Driver Service Daemon
+# Short-Description:    DC3 Modbus Driver
+# Description:          DC3 Modbus Driver Service Daemon
 ### END INIT INFO
 
 set -e
 
-JAR_FILE="dc3-driver-opc-da.jar"
-BASE_DIR="/home/pi/iot-dc3/dc3-driver/dc3-driver-opc-da/target"
+JAR_FILE="dc3-driver-modbus-tcp.jar"
+BASE_DIR="/home/pi/iot-dc3/dc3-driver/dc3-driver-modbus-tcp/target"
 JAVA_OPS="-server -Xms128m -Xmx512m -XX:MetaspaceSize=200m -XX:MaxMetaspaceSize=200m"
 
 start()
