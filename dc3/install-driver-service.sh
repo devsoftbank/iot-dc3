@@ -18,4 +18,26 @@
 
 set -e
 
-docker-compose -f docker-compose-demo.yml up -d
+cd ./init.d
+cp -r dc3-* /etc/init.d
+cd /etc/init.d
+chmod +x dc3-*
+systemctl daemon-reload
+
+# start dc3 driver service
+systemctl start dc3-virtual
+systemctl start dc3-listening-virtual
+systemctl start dc3-opcda
+systemctl start dc3-opcua
+systemctl start dc3-modbus
+systemctl start dc3-mqtt
+systemctl start dc3-plcs7
+
+# enable dc3  driver service
+systemctl enable dc3-virtual
+systemctl enable dc3-listening-virtual
+systemctl enable dc3-opcda
+systemctl enable dc3-opcua
+systemctl enable dc3-modbus
+systemctl enable dc3-mqtt
+systemctl enable dc3-plcs7
