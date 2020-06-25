@@ -14,32 +14,23 @@
  * limitations under the License.
  */
 
-package com.dc3.common.sdk.service;
+package com.dc3.center.manager.service;
 
-import com.dc3.common.bean.driver.PointValue;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
+ * <p>BatchService Interface
+ *
  * @author pnoker
  */
-public interface DriverCommandService {
+public interface BatchService {
 
     /**
-     * 读操作
+     * 批量导入 All, 包含：驱动->模版->驱动配置->位号->设备->位号配置
      *
-     * @param deviceId Device Id
-     * @param pointId  Point Id
-     * @return PointValue
+     * @param multipartFile MultipartFile
+     * @return
      */
-    PointValue read(Long deviceId, Long pointId);
-
-    /**
-     * 写操作
-     *
-     * @param deviceId Device Id
-     * @param pointId  Point Id
-     * @param value    String Value
-     * @return Boolean
-     */
-    Boolean write(Long deviceId, Long pointId, String value);
+    Boolean batchImport(MultipartFile multipartFile);
 
 }

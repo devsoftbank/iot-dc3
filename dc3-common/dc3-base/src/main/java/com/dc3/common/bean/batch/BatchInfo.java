@@ -14,32 +14,23 @@
  * limitations under the License.
  */
 
-package com.dc3.common.sdk.service;
+package com.dc3.common.bean.batch;
 
-import com.dc3.common.bean.driver.PointValue;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 /**
  * @author pnoker
  */
-public interface DriverCommandService {
+@Data
+@NoArgsConstructor
+@Accessors(chain = true)
+public class BatchInfo implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    /**
-     * 读操作
-     *
-     * @param deviceId Device Id
-     * @param pointId  Point Id
-     * @return PointValue
-     */
-    PointValue read(Long deviceId, Long pointId);
-
-    /**
-     * 写操作
-     *
-     * @param deviceId Device Id
-     * @param pointId  Point Id
-     * @param value    String Value
-     * @return Boolean
-     */
-    Boolean write(Long deviceId, Long pointId, String value);
-
+    private String name;
+    private String value;
 }
