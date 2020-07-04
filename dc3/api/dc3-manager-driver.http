@@ -31,6 +31,16 @@ Cache-Control: no-cache
 }
 
 
+### 新增 Driver
+#/manager/driver/batchImport
+POST http://localhost:8400/manager/driver/batchImport
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+< ./file/batch-import.json
+
+
 ### 修改 Driver
 #/manager/driver/update
 POST http://localhost:8400/manager/driver/update
@@ -53,6 +63,27 @@ Cache-Control: no-cache
 GET http://localhost:8400/manager/driver/id/1
 Accept: */*
 Cache-Control: no-cache
+
+
+### 查询 Driver 服务状态
+#/manager/driver/status，支持name\serverName\host模糊查询，port精准查询
+POST http://localhost:8400/manager/driver/status
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+  "name": "",
+  "page": {
+    "current": 1,
+    "orders": [
+      {
+        "column": "id",
+        "asc": false
+      }
+    ]
+  }
+}
 
 
 ### 分页查询 Driver

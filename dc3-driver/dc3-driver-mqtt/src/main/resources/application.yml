@@ -6,8 +6,8 @@ driver:
       enable: false
       corn: '0 0/5 * * * ?'
     custom:
-      enable: false
-      corn:  '0 0/5 * * * ?'
+      enable: true
+      corn:  '0/5 * * * * ?'
   point-attribute:
     - displayName: 指令Topic
       name: commandTopic
@@ -49,4 +49,4 @@ logging:
     com.dc3.common.sdk: DEBUG
     com.dc3: DEBUG
   file:
-    name: /home/pi/logs/driver/mqtt/${spring.application.name}.log
+    name: dc3/logs/driver/mqtt/${spring.application.name}.log

@@ -16,7 +16,7 @@
 
 package com.dc3.common.sdk.service.job;
 
-import com.dc3.common.sdk.service.DriverService;
+import com.dc3.common.sdk.service.CustomDriverService;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -34,11 +34,11 @@ import javax.annotation.Resource;
 @Component
 public class DriverCustomScheduleJob extends QuartzJobBean {
     @Resource
-    private DriverService driverService;
+    private CustomDriverService customDriverService;
 
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         log.debug("Execute custom schedule");
-        driverService.schedule();
+        customDriverService.schedule();
     }
 }

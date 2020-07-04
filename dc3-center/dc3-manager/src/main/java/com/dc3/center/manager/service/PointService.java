@@ -30,9 +30,9 @@ public interface PointService extends Service<Point, PointDto> {
     /**
      * 根据位号 NAME & 模板 ID 查询
      *
-     * @param profileId
-     * @param name
+     * @param name      Point Name
+     * @param profileId Profile Id
      * @return
      */
-    Point selectByNameAndProfile(Long profileId, String name);
+    Point selectByNameAndProfile(String name, Long profileId);
 }

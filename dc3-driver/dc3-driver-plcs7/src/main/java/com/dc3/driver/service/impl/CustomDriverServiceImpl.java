@@ -22,7 +22,7 @@ import com.dc3.common.exception.ServiceException;
 import com.dc3.common.model.Device;
 import com.dc3.common.model.Point;
 import com.dc3.common.sdk.bean.AttributeInfo;
-import com.dc3.common.sdk.service.DriverService;
+import com.dc3.common.sdk.service.CustomDriverService;
 import com.dc3.driver.bean.Plcs7PointVariable;
 import com.github.s7connector.api.S7Connector;
 import com.github.s7connector.api.S7Serializer;
@@ -42,7 +42,7 @@ import static com.dc3.common.sdk.util.DriverUtils.value;
  */
 @Slf4j
 @Service
-public class DriverServiceImpl implements DriverService {
+public class CustomDriverServiceImpl implements CustomDriverService {
 
     /**
      * Plc Connector Map
@@ -55,7 +55,7 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public String read(Map<String, AttributeInfo> driverInfo, Map<String, AttributeInfo> pointInfo, Device device, Point point) {
+    public String read(Map<String, AttributeInfo> driverInfo, Map<String, AttributeInfo> pointInfo, Device device, Point point) throws Exception{
         log.debug("Opc Da Read, device: {}, point: {}", JSON.toJSONString(device), JSON.toJSONString(point));
         S7Serializer serializer = getS7Serializer(device.getId(), driverInfo);
         Plcs7PointVariable plcs7PointVariable = getPointVariable(pointInfo, point.getType());
@@ -63,7 +63,7 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public Boolean write(Map<String, AttributeInfo> driverInfo, Map<String, AttributeInfo> pointInfo, Device device, AttributeInfo value) {
+    public Boolean write(Map<String, AttributeInfo> driverInfo, Map<String, AttributeInfo> pointInfo, Device device, AttributeInfo value) throws Exception{
         log.debug("Opc Da Read, device: {}, value: {}", JSON.toJSONString(device), JSON.toJSONString(value));
         S7Serializer serializer = getS7Serializer(device.getId(), driverInfo);
         Plcs7PointVariable plcs7PointVariable = getPointVariable(pointInfo, value.getType());

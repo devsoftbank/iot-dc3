@@ -21,7 +21,7 @@ import com.dc3.common.constant.Common;
 import com.dc3.common.model.Device;
 import com.dc3.common.model.Point;
 import com.dc3.common.sdk.bean.AttributeInfo;
-import com.dc3.common.sdk.service.DriverService;
+import com.dc3.common.sdk.service.CustomDriverService;
 import com.serotonin.modbus4j.ModbusFactory;
 import com.serotonin.modbus4j.ModbusMaster;
 import com.serotonin.modbus4j.code.DataType;
@@ -32,7 +32,6 @@ import com.serotonin.modbus4j.ip.IpParameters;
 import com.serotonin.modbus4j.locator.BaseLocator;
 import com.serotonin.modbus4j.msg.WriteCoilRequest;
 import com.serotonin.modbus4j.msg.WriteCoilResponse;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +46,7 @@ import static com.dc3.common.sdk.util.DriverUtils.value;
  */
 @Slf4j
 @Service
-public class DriverServiceImpl implements DriverService {
+public class CustomDriverServiceImpl implements CustomDriverService {
     static ModbusFactory modbusFactory;
 
     static {
@@ -61,15 +60,13 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    @SneakyThrows
-    public String read(Map<String, AttributeInfo> driverInfo, Map<String, AttributeInfo> pointInfo, Device device, Point point) {
+    public String read(Map<String, AttributeInfo> driverInfo, Map<String, AttributeInfo> pointInfo, Device device, Point point) throws Exception {
         ModbusMaster modbusMaster = getMaster(device.getId(), driverInfo);
         return readValue(modbusMaster, pointInfo, point.getType());
     }
 
     @Override
-    @SneakyThrows
-    public Boolean write(Map<String, AttributeInfo> driverInfo, Map<String, AttributeInfo> pointInfo, Device device, AttributeInfo value) {
+    public Boolean write(Map<String, AttributeInfo> driverInfo, Map<String, AttributeInfo> pointInfo, Device device, AttributeInfo value) throws Exception {
         ModbusMaster modbusMaster = getMaster(device.getId(), driverInfo);
         return writeValue(modbusMaster, pointInfo, value.getType(), value.getValue());
     }

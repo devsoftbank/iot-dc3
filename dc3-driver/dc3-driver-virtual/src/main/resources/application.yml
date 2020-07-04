@@ -6,8 +6,8 @@ driver:
       enable: true
       corn: '0 0/5 * * * ?'
     custom:
-      enable: false
-      corn:  '0 0/5 * * * ?'
+      enable: true
+      corn:  '0/5 * * * * ?'
   driver-attribute:
     - displayName: 主机
       name: host
@@ -38,4 +38,4 @@ logging:
     com.dc3.common.sdk: DEBUG
     com.dc3: DEBUG
   file:
-    name: /home/pi/logs/driver/virtual/${spring.application.name}.log
+    name: dc3/logs/driver/virtual/${spring.application.name}.log

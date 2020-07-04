@@ -39,6 +39,16 @@ public interface Common {
     String KEY_ALGORITHM_RSA = "RSA";
 
     /**
+     * 默认上传文件的缓存位置
+     */
+    String TEMP_FILE_PATH = System.getProperty("java.io.tmpdir") + "/dc3/";
+
+    /**
+     * 用户主目录
+     */
+    String USER_HOME_PATH = System.getProperty("user.home") + "/.dc3/";
+
+    /**
      * 时间格式化
      */
     String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
@@ -70,9 +80,20 @@ public interface Common {
     }
 
     /**
+     * 设备常量
+     */
+    interface Device {
+        String ONLINE = "ONLINE";
+        String OFFLINE = "OFFLINE";
+        String MAINTAIN = "MAINTAIN";
+        String FAULT = "FAULT";
+    }
+
+    /**
      * 数据类型
      */
     interface ValueType {
+        String SHORT = "short";
         String INT = "int";
         String LONG = "long";
         String FLOAT = "float";
@@ -98,6 +119,7 @@ public interface Common {
          */
         String DC3_MANAGER_SERVICE_NAME = "DC3-MANAGER";
         String DC3_MANAGER_DRIVER_URL_PREFIX = "/manager/driver";
+        String DC3_MANAGER_BATCH_URL_PREFIX = "/manager/batch";
         String DC3_MANAGER_DRIVER_ATTRIBUTE_URL_PREFIX = "/manager/driverAttribute";
         String DC3_MANAGER_POINT_ATTRIBUTE_URL_PREFIX = "/manager/pointAttribute";
         String DC3_MANAGER_PROFILE_URL_PREFIX = "/manager/profile";
@@ -141,6 +163,8 @@ public interface Common {
         String IP = "_ip";
         String NAME = "_name";
         String CODE = "_code";
+        String STATUS = "_status";
+        String VALUE = "_value";
         String DIC = "_dic";
         String LIST = "_list";
         String SALT = "_salt";
@@ -166,6 +190,9 @@ public interface Common {
         String LABEL = "label";
         String LABEL_BIND = "label_bind";
         String BLACK_IP = "black_ip";
+
+        String REAL_TIME_VALUE_KEY_PREFIX = Common.Cache.POINT + Common.Cache.VALUE + Common.Cache.SEPARATOR;
+        String DEVICE_STATUS_KEY_PREFIX = Common.Cache.DEVICE + Common.Cache.STATUS + Common.Cache.SEPARATOR;
     }
 
 }

@@ -1,0 +1,184 @@
+[
+  {
+    "serviceName": "dc3-driver-virtual",
+    "profiles": [
+      {
+        "name": "Virtual-Profile",
+        "share": true,
+        "driverInfos": [
+          {
+            "name": "host",
+            "value": "localhost"
+          },
+          {
+            "name": "port",
+            "value": "9000"
+          }
+        ],
+        "points": [
+          {
+            "name": "Virtual-Point-1",
+            "type": "string",
+            "rw": 0,
+            "base": 0,
+            "minimum": -999999,
+            "maximum": 999999,
+            "multiple": 1,
+            "accrue": false,
+            "format": "%.3f",
+            "unit": "-"
+          },
+          {
+            "name": "Virtual-Point-2",
+            "type": "boolean",
+            "rw": 0,
+            "base": 0,
+            "minimum": -999999,
+            "maximum": 999999,
+            "multiple": 1,
+            "accrue": false,
+            "format": "%.3f",
+            "unit": "-"
+          },
+          {
+            "name": "Virtual-Point-3",
+            "type": "int",
+            "rw": 0,
+            "base": 0,
+            "minimum": -999999,
+            "maximum": 999999,
+            "multiple": 1,
+            "accrue": false,
+            "format": "%.3f",
+            "unit": "-"
+          },
+          {
+            "name": "Virtual-Point-4",
+            "type": "long",
+            "rw": 0,
+            "base": 0,
+            "minimum": -999999,
+            "maximum": 999999,
+            "multiple": 1,
+            "accrue": false,
+            "format": "%.3f",
+            "unit": "-"
+          },
+          {
+            "name": "Virtual-Point-5",
+            "type": "float",
+            "rw": 0,
+            "base": 0,
+            "minimum": -999999,
+            "maximum": 999999,
+            "multiple": 1,
+            "accrue": false,
+            "format": "%.3f",
+            "unit": "-"
+          },
+          {
+            "name": "Virtual-Point-6",
+            "type": "double",
+            "rw": 0,
+            "base": 0,
+            "minimum": -999999,
+            "maximum": 999999,
+            "multiple": 1,
+            "accrue": false,
+            "format": "%.3f",
+            "unit": "-"
+          }
+        ],
+        "groups": [
+          {
+            "name": "Virtual-Group",
+            "devices": [
+              {
+                "name": "Virtual-Device-1",
+                "points": {
+                  "Virtual-Point-1": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-1"
+                    }
+                  ],
+                  "Virtual-Point-2": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-2"
+                    }
+                  ],
+                  "Virtual-Point-3": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-3"
+                    }
+                  ],
+                  "Virtual-Point-4": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-4"
+                    }
+                  ],
+                  "Virtual-Point-5": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-5"
+                    }
+                  ],
+                  "Virtual-Point-6": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-6"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Virtual-Device-2",
+                "points": {
+                  "Virtual-Point-1": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-1"
+                    }
+                  ],
+                  "Virtual-Point-2": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-2"
+                    }
+                  ],
+                  "Virtual-Point-3": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-3"
+                    }
+                  ],
+                  "Virtual-Point-4": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-4"
+                    }
+                  ],
+                  "Virtual-Point-5": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-5"
+                    }
+                  ],
+                  "Virtual-Point-6": [
+                    {
+                      "name": "tag",
+                      "value": "virtual-tag-6"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

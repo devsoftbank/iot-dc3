@@ -19,9 +19,11 @@ package com.dc3.center.manager.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dc3.api.center.data.feign.PointValueClient;
 import com.dc3.center.manager.mapper.DeviceMapper;
 import com.dc3.center.manager.service.DeviceService;
 import com.dc3.common.bean.Pages;
+import com.dc3.common.bean.R;
 import com.dc3.common.constant.Common;
 import com.dc3.common.dto.DeviceDto;
 import com.dc3.common.exception.ServiceException;
@@ -35,6 +37,8 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -48,6 +52,8 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Resource
     private DeviceMapper deviceMapper;
+    @Resource
+    private PointValueClient pointValueClient;
 
 
     @Override
@@ -62,7 +68,7 @@ public class DeviceServiceImpl implements DeviceService {
             }
     )
     public Device add(Device device) {
-        Device select = selectDeviceByNameAndGroup(device.getGroupId(), device.getName());
+        Device select = selectDeviceByNameAndGroup(device.getName(), device.getGroupId());
         Optional.ofNullable(select).ifPresent(d -> {
             throw new ServiceException("The device already exists in the group");
         });
@@ -122,11 +128,28 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     @Cacheable(value = Common.Cache.DEVICE + Common.Cache.GROUP_NAME, key = "#groupId+'.'+#name", unless = "#result==null")
-    public Device selectDeviceByNameAndGroup(long groupId, String name) {
+    public Device selectDeviceByNameAndGroup(String name, Long groupId) {
         LambdaQueryWrapper<Device> queryWrapper = Wrappers.<Device>query().lambda();
         queryWrapper.eq(Device::getGroupId, groupId);
         queryWrapper.eq(Device::getName, name);
         return deviceMapper.selectOne(queryWrapper);
+    }
+
+    @Override
+    public Map<Long, String> deviceStatus(DeviceDto deviceDto) {
+        Map<Long, String> deviceStatusMap = new HashMap<>(16);
+        Page<Device> devicePage = list(deviceDto);
+        if (devicePage.getRecords().size() > 0) {
+            devicePage.getRecords().forEach(device -> {
+                String status = Common.Device.OFFLINE;
+                R<String> rStatus = pointValueClient.status(device.getId());
+                if (rStatus.isOk()) {
+                    status = rStatus.getData();
+                }
+                deviceStatusMap.put(device.getId(), status);
+            });
+        }
+        return deviceStatusMap;
     }
 
     @Override
