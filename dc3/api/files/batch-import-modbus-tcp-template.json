@@ -1,17 +1,17 @@
 [
   {
-    "serviceName": "dc3-driver-virtual",
+    "serviceName": "dc3-driver-modbus-tcp",
     "profiles": [
       {
-        "name": "Virtual-Profile-1",
+        "name": "ModbusTcp-Profile-1",
         "share": true,
         "driverConfig": {
-          "host": "localhost",
-          "port": "9000"
+          "host": "127.0.0.1",
+          "port": "502"
         },
         "points": [
           {
-            "name": "Virtual-Point-1",
+            "name": "ModbusTcp-Point-1",
             "type": "string",
             "rw": 0,
             "base": 0,
@@ -23,7 +23,7 @@
             "unit": "-"
           },
           {
-            "name": "Virtual-Point-2",
+            "name": "ModbusTcp-Point-2",
             "type": "boolean",
             "rw": 0,
             "base": 0,
@@ -35,7 +35,7 @@
             "unit": "-"
           },
           {
-            "name": "Virtual-Point-3",
+            "name": "ModbusTcp-Point-3",
             "type": "int",
             "rw": 0,
             "base": 0,
@@ -47,7 +47,7 @@
             "unit": "-"
           },
           {
-            "name": "Virtual-Point-4",
+            "name": "ModbusTcp-Point-4",
             "type": "long",
             "rw": 0,
             "base": 0,
@@ -59,7 +59,7 @@
             "unit": "-"
           },
           {
-            "name": "Virtual-Point-5",
+            "name": "ModbusTcp-Point-5",
             "type": "float",
             "rw": 0,
             "base": 0,
@@ -71,7 +71,7 @@
             "unit": "-"
           },
           {
-            "name": "Virtual-Point-6",
+            "name": "ModbusTcp-Point-6",
             "type": "double",
             "rw": 0,
             "base": 0,
@@ -85,51 +85,40 @@
         ],
         "groups": [
           {
-            "name": "Virtual-Group-1",
+            "name": "ModbusTcp-Group-1",
             "devices": [
               {
-                "name": "Virtual-Device-1",
+                "name": "ModbusTcp-Device-1",
                 "pointConfig": {
-                  "Virtual-Point-1": {
-                    "tag": "Virtual-Device-1"
+                  "ModbusTcp-Point-1": {
+                    "slaveId": "1",
+                    "functionCode": "3",
+                    "offset": "1"
                   },
-                  "Virtual-Point-2": {
-                    "tag": "Virtual-Device-2"
+                  "ModbusTcp-Point-2": {
+                    "slaveId": "1",
+                    "functionCode": "3",
+                    "offset": "2"
                   },
-                  "Virtual-Point-3": {
-                    "tag": "Virtual-Device-3"
+                  "ModbusTcp-Point-3": {
+                    "slaveId": "1",
+                    "functionCode": "3",
+                    "offset": "3"
                   },
-                  "Virtual-Point-4": {
-                    "tag": "Virtual-Device-4"
+                  "ModbusTcp-Point-4": {
+                    "slaveId": "1",
+                    "functionCode": "3",
+                    "offset": "4"
                   },
-                  "Virtual-Point-5": {
-                    "tag": "Virtual-Device-5"
+                  "ModbusTcp-Point-5": {
+                    "slaveId": "1",
+                    "functionCode": "3",
+                    "offset": "5"
                   },
-                  "Virtual-Point-6": {
-                    "tag": "Virtual-Device-6"
-                  }
-                }
-              },
-              {
-                "name": "Virtual-Device-2",
-                "pointConfig": {
-                  "Virtual-Point-1": {
-                    "tag": "Virtual-Device-1"
-                  },
-                  "Virtual-Point-2": {
-                    "tag": "Virtual-Device-2"
-                  },
-                  "Virtual-Point-3": {
-                    "tag": "Virtual-Device-3"
-                  },
-                  "Virtual-Point-4": {
-                    "tag": "Virtual-Device-4"
-                  },
-                  "Virtual-Point-5": {
-                    "tag": "Virtual-Device-5"
-                  },
-                  "Virtual-Point-6": {
-                    "tag": "Virtual-Device-6"
+                  "ModbusTcp-Point-6": {
+                    "slaveId": "1",
+                    "functionCode": "3",
+                    "offset": "6"
                   }
                 }
               }
