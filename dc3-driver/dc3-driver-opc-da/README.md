@@ -42,7 +42,7 @@
 schedule:
     read:
       enable: true
-      corn: '0 0/5 * * * ?'
+      corn: '0/30 * * * * ?'
 ```
 
 
