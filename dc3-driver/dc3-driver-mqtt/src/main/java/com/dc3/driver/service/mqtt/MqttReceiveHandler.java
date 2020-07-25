@@ -51,7 +51,7 @@ public class MqttReceiveHandler {
      * ConditionalOnProperty(value = "driver.mqtt.default.receive.enable")
      * 根据配置属性driver.mqtt.default.receive.enable选择是否开启 Default Topic 主题的数据接收逻辑
      *
-     * @return
+     * @return MessageHandler
      */
     @Bean
     @ServiceActivator(inputChannel = "defaultMqttInputChannel")
